@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SurakshaSetu - Disaster Preparedness</title>
+    
+    <!-- External Libraries -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Your Custom Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gray-100">
+
+    <!-- Container for all pages -->
+    <div id="app-container">
+
+        <!-- =================================================================
+        PAGE 1: LOGIN INTERFACE
+        ================================================================== -->
+        <div id="loginPage" class="page active">
+            <div class="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-500 to-indigo-600 p-4">
+                <div class="w-full max-w-md bg-white rounded-2xl shadow-xl p-8 space-y-6">
+                    <div class="text-center">
+                        <h1 class="text-4xl font-bold text-gray-800">SurakshaSetu</h1>
+                        <p class="text-gray-500 mt-2">Your Bridge to Safety</p>
+                    </div>
+                    <div class="text-center">
+                        <img src="https://placehold.co/150x150/3B82F6/FFFFFF?text=SS" alt="Logo" class="w-24 h-24 mx-auto rounded-full border-4 border-white shadow-lg">
+                    </div>
+                    <form id="loginForm" class="space-y-6">
+                        <div>
+                            <label for="username" class="text-sm font-medium text-gray-700">Username / Email</label>
+                            <input type="text" id="username" name="username" placeholder="e.g., student@school.in" required
+                                class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                        </div>
+                        <div>
+                            <label for="password" class="text-sm font-medium text-gray-700">Password</label>
+                            <input type="password" id="password" name="password" placeholder="••••••••" required
+                                class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <input id="remember-me" name="remember-me" type="checkbox" class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded">
+                                <label for="remember-me" class="ml-2 block text-sm text-gray-900">Remember me</label>
+                            </div>
+                            <div class="text-sm">
+                                <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500">Forgot your password?</a>
+                            </div>
+                        </div>
+                        <div>
+                            <button type="submit"
+                                class="w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-transform transform hover:scale-105">
+                                Sign in
+                            </button>
+                        </div>
+                    </form>
+                    <p id="loginError" class="text-red-500 text-sm text-center"></p>
+                    <p class="text-center text-sm text-gray-600">
+                        Admin Login? <a href="#" id="adminLoginLink" class="font-medium text-indigo-600 hover:text-indigo-500">Click here</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- =================================================================
+        MAIN APPLICATION WRAPPER (Hidden post-login)
+        ================================================================== -->
+        <div id="mainApp" class="hidden">
+            <!-- Header/Navbar -->
+            <header class="bg-white shadow-md sticky top-0 z-50">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="flex justify-between items-center h-16">
+                        <div class="flex items-center space-x-4">
+                            <div class="text-2xl font-bold text-indigo-600">SurakshaSetu</div>
+                        </div>
+                        <nav class="hidden md:flex space-x-6">
+                            <a href="#" class="nav-link text-gray-700 hover:text-indigo-600 font-medium" data-page="dashboardPage">Dashboard</a>
+                            <a href="#" class="nav-link text-gray-700 hover:text-indigo-600 font-medium" data-page="drillsPage">Virtual Drills</a>
+                            <a href="#" class="nav-link text-gray-700 hover:text-indigo-600 font-medium" data-page="contactsPage">Emergency Contacts</a>
+                            <a href="#" id="adminDashboardLink" class="nav-link text-gray-700 hover:text-indigo-600 font-medium hidden" data-page="adminPage">Admin Dashboard</a>
+                        </nav>
+                        <div class="flex items-center space-x-4">
+                            <div class="relative">
+                                <i data-lucide="bell" class="text-gray-600"></i>
+                                <span class="absolute -top-1 -right-1 flex h-3 w-3">
+                                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                                    <span class="relative inline-flex rounded-full h-3 w-3 bg-red-500"></span>
+                                </span>
+                            </div>
+                            <div id="userProfile" class="flex items-center space-x-2">
+                                <img src="https://placehold.co/40x40/E0E7FF/4F46E5?text=U" class="w-8 h-8 rounded-full" alt="User Avatar">
+                                <span id="usernameDisplay" class="font-medium text-gray-700 text-sm"></span>
+                            </div>
+                            <button id="logoutButton" class="text-gray-600 hover:text-indigo-600">
+                                <i data-lucide="log-out" class="h-6 w-6"></i>
+                            </button>
+                            <button id="mobileMenuButton" class="md:hidden text-gray-600">
+                                <i data-lucide="menu" class="h-6 w-6"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Mobile Menu -->
+                <div id="mobileMenu" class="md:hidden hidden bg-white border-t">
+                    <a href="#" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 nav-link" data-page="dashboardPage">Dashboard</a>
+                    <a href="#" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 nav-link" data-page="drillsPage">Virtual Drills</a>
+                    <a href="#" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 nav-link" data-page="contactsPage">Emergency Contacts</a>
+                    <a href="#" id="adminDashboardLinkMobile" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 nav-link hidden" data-page="adminPage">Admin Dashboard</a>
+                </div>
+            </header>
+            
+            <main class="p-4 sm:p-6 lg:p-8">
+            
+                <!-- =================================================================
+                PAGE 2: MAIN DASHBOARD
+                ================================================================== -->
+                <div id="dashboardPage" class="page">
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                        <!-- Left Column -->
+                        <div class="lg:col-span-2 space-y-6">
+                            <!-- Welcome Banner -->
+                            <div class="bg-indigo-600 text-white p-6 rounded-xl shadow-lg">
+                                <h1 class="text-3xl font-bold">Welcome, <span id="welcomeName">Student</span>!</h1>
+                                <p class="mt-2">Stay informed, stay safe. Your preparedness journey starts here.</p>
+                            </div>
+
+                            <!-- Natural Disasters -->
+                            <div>
+                                <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center"><i data-lucide="cloud-sun" class="mr-2 text-blue-500"></i>Natural Disasters</h2>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                                    <div class="disaster-card bg-white p-4 rounded-lg shadow hover:shadow-xl transition-shadow cursor-pointer" data-page="disasterDetail_earthquake">
+                                        <i data-lucide="activity" class="text-yellow-600 h-8 w-8 mb-2"></i>
+                                        <h3 class="font-semibold text-gray-800">Earthquake</h3>
+                                    </div>
+                                    <div class="disaster-card bg-white p-4 rounded-lg shadow hover:shadow-xl transition-shadow cursor-pointer" data-page="disasterDetail_flood">
+                                        <i data-lucide="waves" class="text-blue-600 h-8 w-8 mb-2"></i>
+                                        <h3 class="font-semibold text-gray-800">Flood</h3>
+                                    </div>
+                                     <div class="disaster-card bg-white p-4 rounded-lg shadow hover:shadow-xl transition-shadow cursor-pointer" data-page="disasterDetail_tsunami">
+                                        <i data-lucide="ship-wheel" class="text-cyan-600 h-8 w-8 mb-2"></i>
+                                        <h3 class="font-semibold text-gray-800">Tsunami</h3>
+                                    </div>
+                                    <div class="disaster-card bg-white p-4 rounded-lg shadow hover:shadow-xl transition-shadow cursor-pointer" data-page="disasterDetail_landslide">
+                                        <i data-lucide="mountain-snow" class="text-gray-600 h-8 w-8 mb-2"></i>
+                                        <h3 class="font-semibold text-gray-800">Landslide</h3>
+                                    </div>
+                                    <div class="disaster-card bg-white p-4 rounded-lg shadow hover:shadow-xl transition-shadow cursor-pointer" data-page="disasterDetail_forestfire">
+                                        <i data-lucide="flame" class="text-red-600 h-8 w-8 mb-2"></i>
+                                        <h3 class="font-semibold text-gray-800">Forest Fire</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Man-made Disasters -->
+                            <div>
+                                <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center"><i data-lucide="factory" class="mr-2 text-gray-700"></i>Man-Made Disasters</h2>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                                    <div class="disaster-card bg-white p-4 rounded-lg shadow hover:shadow-xl transition-shadow cursor-pointer" data-page="disasterDetail_gasleak">
+                                        <i data-lucide="wind" class="text-green-600 h-8 w-8 mb-2"></i>
+                                        <h3 class="font-semibold text-gray-800">Gas Leakage</h3>
+                                    </div>
+                                    <div class="disaster-card bg-white p-4 rounded-lg shadow hover:shadow-xl transition-shadow cursor-pointer" data-page="disasterDetail_nuclear">
+                                        <i data-lucide="atom" class="text-purple-600 h-8 w-8 mb-2"></i>
+                                        <h3 class="font-semibold text-gray-800">Nuclear Explosion</h3>
+                                    </div>
+                                    <div class="disaster-card bg-white p-4 rounded-lg shadow hover:shadow-xl transition-shadow cursor-pointer" data-page="disasterDetail_terrorist">
+                                        <i data-lucide="bomb" class="text-red-800 h-8 w-8 mb-2"></i>
+                                        <h3 class="font-semibold text-gray-800">Terrorist Attack</h3>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        
+                        <!-- Right Column -->
+                        <div class="space-y-6">
+                             <!-- Preparedness Score -->
+                            <div class="bg-white p-6 rounded-xl shadow-lg text-center">
+                                <h3 class="font-semibold text-gray-800 mb-4">Your Preparedness Score</h3>
+                                <div class="relative w-32 h-32 mx-auto">
+                                    <svg class="w-full h-full" viewBox="0 0 36 36">
+                                        <path class="text-gray-200" stroke-width="3" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                        <path class="text-green-500" stroke-width="3" fill="none" stroke-dasharray="75, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                    </svg>
+                                    <div class="absolute inset-0 flex items-center justify-center">
+                                        <span class="text-3xl font-bold text-gray-700">75%</span>
+                                    </div>
+                                </div>
+                                <p class="text-sm text-gray-500 mt-3">Well done! Complete more modules to improve.</p>
+                            </div>
+
+                            <!-- Region-Specific Alerts -->
+                            <div class="bg-white p-6 rounded-xl shadow-lg">
+                                <h3 class="font-semibold text-gray-800 mb-4 flex items-center"><i data-lucide="map-pin" class="mr-2 text-red-500"></i>Alerts for Chittorgarh, Rajasthan</h3>
+                                <div class="space-y-4">
+                                    <div class="flex items-start space-x-3 bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-3 rounded">
+                                        <i data-lucide="alert-triangle" class="h-5 w-5 mt-1"></i>
+                                        <div>
+                                            <p class="font-bold">Heatwave Warning</p>
+                                            <p class="text-sm">High temperatures expected this week. Stay hydrated and avoid outdoor activities during peak hours.</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start space-x-3 bg-blue-100 border-l-4 border-blue-500 text-blue-700 p-3 rounded">
+                                       <i data-lucide="info" class="h-5 w-5 mt-1"></i>
+                                        <div>
+                                            <p class="font-bold">Mock Drill Scheduled</p>
+                                            <p class="text-sm">A campus-wide fire safety drill is scheduled for Friday at 11:00 AM.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- =================================================================
+                PAGE 3: DISASTER DETAIL PAGES (TEMPLATE)
+                ================================================================== -->
+                <div id="disasterDetailPage" class="page">
+                    <!-- Content will be dynamically inserted here -->
+                </div>
+
+                <!-- =================================================================
+                PAGE 4: VIRTUAL DRILLS PAGE
+                ================================================================== -->
+                <div id="drillsPage" class="page">
+                    <h1 class="text-3xl font-bold text-gray-800 mb-6">Virtual Drills & Gamified Learning</h1>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <!-- Drill Card: Earthquake -->
+                        <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                            <img src="https://placehold.co/600x400/FBBF24/FFFFFF?text=Earthquake+Drill" alt="Earthquake Scenario" class="w-full h-48 object-cover">
+                            <div class="p-6">
+                                <h3 class="text-xl font-semibold mb-2">Earthquake: Drop, Cover, Hold On!</h3>
+                                <p class="text-gray-600 mb-4">An interactive simulation where you make choices during a simulated earthquake in a classroom.</p>
+                                <button class="w-full bg-yellow-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-yellow-600 transition">Start Simulation</button>
+                            </div>
+                        </div>
+                        <!-- Drill Card: Fire Evacuation -->
+                        <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                             <img src="https://placehold.co/600x400/F87171/FFFFFF?text=Fire+Drill" alt="Fire Scenario" class="w-full h-48 object-cover">
+                            <div class="p-6">
+                                <h3 class="text-xl font-semibold mb-2">Fire Evacuation Challenge</h3>
+                                <p class="text-gray-600 mb-4">Find the safest and quickest route out of a smoke-filled building. Beat the clock!</p>
+                                <button class="w-full bg-red-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-red-600 transition">Start Challenge</button>
+                            </div>
+                        </div>
+                         <!-- Drill Card: Flood Response -->
+                        <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                             <img src="https://placehold.co/600x400/60A5FA/FFFFFF?text=Flood+Drill" alt="Flood Scenario" class="w-full h-48 object-cover">
+                            <div class="p-6">
+                                <h3 class="text-xl font-semibold mb-2">Flood Ready Quiz</h3>
+                                <p class="text-gray-600 mb-4">Test your knowledge on how to prepare for and react to a flood warning in your area.</p>
+                                <button class="w-full bg-blue-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-600 transition">Take the Quiz</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- =================================================================
+                PAGE 5: ADMIN DASHBOARD
+                ================================================================== -->
+                <div id="adminPage" class="page">
+                    <h1 class="text-3xl font-bold text-gray-800 mb-6">Administrator Dashboard</h1>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+                        <div class="bg-white p-6 rounded-xl shadow-md text-center">
+                            <i data-lucide="users" class="h-10 w-10 text-blue-500 mx-auto mb-2"></i>
+                            <p class="text-3xl font-bold">1,254</p>
+                            <p class="text-gray-500">Active Students</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-xl shadow-md text-center">
+                             <i data-lucide="siren" class="h-10 w-10 text-green-500 mx-auto mb-2"></i>
+                            <p class="text-3xl font-bold">82%</p>
+                            <p class="text-gray-500">Drill Participation Rate</p>
+                        </div>
+                         <div class="bg-white p-6 rounded-xl shadow-md text-center">
+                             <i data-lucide="shield-check" class="h-10 w-10 text-yellow-500 mx-auto mb-2"></i>
+                            <p class="text-3xl font-bold">78%</p>
+                            <p class="text-gray-500">Average Preparedness Score</p>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white p-6 rounded-xl shadow-md">
+                        <h2 class="text-xl font-semibold mb-4">Drill Participation by Class</h2>
+                        <div class="space-y-4">
+                            <!-- Class Progress Bar -->
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="text-base font-medium text-gray-700">Class 10-A</span>
+                                    <span class="text-sm font-medium text-gray-700">95%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                    <div class="bg-green-600 h-2.5 rounded-full" style="width: 95%"></div>
+                                </div>
+                            </div>
+                             <!-- Class Progress Bar -->
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="text-base font-medium text-gray-700">Class 9-B</span>
+                                    <span class="text-sm font-medium text-gray-700">70%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                    <div class="bg-yellow-400 h-2.5 rounded-full" style="width: 70%"></div>
+                                </div>
+                            </div>
+                             <!-- Class Progress Bar -->
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="text-base font-medium text-gray-700">Class 12-C</span>
+                                    <span class="text-sm font-medium text-gray-700">55%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                    <div class="bg-red-500 h-2.5 rounded-full" style="width: 55%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- =================================================================
+                PAGE 6: EMERGENCY CONTACTS
+                ================================================================== -->
+                <div id="contactsPage" class="page">
+                    <h1 class="text-3xl font-bold text-gray-800 mb-6">Emergency Contacts</h1>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div class="bg-white p-6 rounded-lg shadow-md flex items-center space-x-4">
+                            <i data-lucide="phone" class="h-10 w-10 text-red-500 bg-red-100 p-2 rounded-full"></i>
+                            <div>
+                                <h3 class="font-semibold">National Emergency Number</h3>
+                                <p class="text-2xl font-bold text-gray-800">112</p>
+                            </div>
+                        </div>
+                        <div class="bg-white p-6 rounded-lg shadow-md flex items-center space-x-4">
+                            <i data-lucide="siren" class="h-10 w-10 text-blue-500 bg-blue-100 p-2 rounded-full"></i>
+                            <div>
+                                <h3 class="font-semibold">Police</h3>
+                                <p class="text-2xl font-bold text-gray-800">100</p>
+                            </div>
+                        </div>
+                         <div class="bg-white p-6 rounded-lg shadow-md flex items-center space-x-4">
+                           <i data-lucide="flame" class="h-10 w-10 text-orange-500 bg-orange-100 p-2 rounded-full"></i>
+                            <div>
+                                <h3 class="font-semibold">Fire</h3>
+                                <p class="text-2xl font-bold text-gray-800">101</p>
+                            </div>
+                        </div>
+                        <div class="bg-white p-6 rounded-lg shadow-md flex items-center space-x-4">
+                           <i data-lucide="ambulance" class="h-10 w-10 text-green-500 bg-green-100 p-2 rounded-full"></i>
+                            <div>
+                                <h3 class="font-semibold">Ambulance</h3>
+                                <p class="text-2xl font-bold text-gray-800">102</p>
+                            </div>
+                        </div>
+                         <div class="bg-white p-6 rounded-lg shadow-md flex items-center space-x-4">
+                           <i data-lucide="shield" class="h-10 w-10 text-yellow-500 bg-yellow-100 p-2 rounded-full"></i>
+                            <div>
+                                <h3 class="font-semibold">Disaster Management (NDMA)</h3>
+                                <p class="text-2xl font-bold text-gray-800">1078</p>
+                            </div>
+                        </div>
+                         <div class="bg-white p-6 rounded-lg shadow-md flex items-center space-x-4">
+                           <i data-lucide="school" class="h-10 w-10 text-indigo-500 bg-indigo-100 p-2 rounded-full"></i>
+                            <div>
+                                <h3 class="font-semibold">School Admin Office</h3>
+                                <p class="text-xl font-bold text-gray-800">01472-24XXXX</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Your Custom Scripts -->
+    <!-- Data must be loaded BEFORE the main script that uses it -->
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
+

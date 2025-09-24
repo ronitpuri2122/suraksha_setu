@@ -1,0 +1,63 @@
+/* --- Base Styles --- */
+body {
+    font-family: 'Inter', sans-serif;
+}
+
+/* --- Page Transitions --- */
+.page {
+    display: none;
+    animation: fadeIn 0.5s;
+}
+
+.page.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* --- Custom Scrollbar --- */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* --- Navigation Enhancements --- */
+.nav-link {
+    position: relative;
+    transition: color 0.3s;
+}
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #4f46e5; /* Indigo */
+    transition: width 0.3s ease-in-out;
+}
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* --- Card hover effect --- */
+.disaster-card {
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.disaster-card:hover {
+    transform: translateY(-5px);
+}
+
