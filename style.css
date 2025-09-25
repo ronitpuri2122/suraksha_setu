@@ -1,24 +1,15 @@
-/* --- Base Styles --- */
 body {
     font-family: 'Inter', sans-serif;
 }
-
-/* --- Page Transitions --- */
 .page {
     display: none;
     animation: fadeIn 0.5s;
 }
-
 .page.active {
     display: block;
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-/* --- Custom Scrollbar --- */
+/* Custom scrollbar */
 ::-webkit-scrollbar {
     width: 8px;
 }
@@ -33,31 +24,63 @@ body {
     background: #555;
 }
 
-/* --- Navigation Enhancements --- */
-.nav-link {
-    position: relative;
-    transition: color 0.3s;
-}
-.nav-link::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 2px;
-    bottom: -5px;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: #4f46e5; /* Indigo */
-    transition: width 0.3s ease-in-out;
-}
-.nav-link:hover::after {
-    width: 100%;
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
-/* --- Card hover effect --- */
-.disaster-card {
-    transition: transform 0.3s, box-shadow 0.3s;
+/* FLORIMA Game Styles */
+.game-tile {
+    @apply w-full aspect-square border-2 flex items-center justify-center text-xs text-center font-semibold rounded-md transition-all duration-300 cursor-pointer;
 }
-.disaster-card:hover {
-    transform: translateY(-5px);
+
+.tile-river { @apply bg-blue-400 border-blue-600 text-white; }
+.tile-plains { @apply bg-green-300 border-green-500; }
+.tile-town { @apply bg-gray-300 border-gray-500; }
+.tile-farmland { @apply bg-yellow-300 border-yellow-500; }
+.tile-school { @apply bg-indigo-300 border-indigo-500 text-white; }
+.tile-hospital { @apply bg-red-300 border-red-500 text-white; }
+
+.game-tile.flooded {
+    @apply bg-blue-700 text-white animate-pulse;
+}
+
+.game-tile:hover {
+    transform: scale(1.05);
+    z-index: 10;
+}
+
+.sandbag-token {
+    @apply absolute top-1 right-1 w-5 h-5 bg-yellow-400 border-2 border-yellow-600 rounded-full flex items-center justify-center text-xs font-bold text-yellow-800 shadow-lg;
+    content: 'S';
+}
+
+.evac-token {
+     @apply absolute bottom-1 left-1 w-5 h-5 bg-green-500 border-2 border-green-700 rounded-full flex items-center justify-center text-xs font-bold text-white shadow-lg;
+     content: 'E';
+}
+
+.resource-card {
+    @apply p-2 border-2 rounded-lg text-center cursor-pointer transition-transform;
+}
+
+.resource-card.selected {
+    @apply bg-green-200 border-green-500 scale-105 shadow-lg;
+}
+
+/* Animated Drill Styles */
+.drill-step-content {
+    animation: slideIn 0.5s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
