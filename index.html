@@ -4,13 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SurakshaSetu - Disaster Preparedness</title>
-    
-    <!-- External Libraries -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Your Custom Stylesheet -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="bg-gray-100">
@@ -85,7 +80,7 @@
                         </nav>
                         <div class="flex items-center space-x-4">
                             <div class="relative">
-                                <i data-lucide="bell" class="text-gray-600"></i>
+                                <span class="lucide-icon" data-lucide="bell"></span>
                                 <span class="absolute -top-1 -right-1 flex h-3 w-3">
                                     <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
                                     <span class="relative inline-flex rounded-full h-3 w-3 bg-red-500"></span>
@@ -96,10 +91,10 @@
                                 <span id="usernameDisplay" class="font-medium text-gray-700 text-sm"></span>
                             </div>
                             <button id="logoutButton" class="text-gray-600 hover:text-indigo-600">
-                                <i data-lucide="log-out" class="h-6 w-6"></i>
+                                <span class="lucide-icon h-6 w-6" data-lucide="log-out"></span>
                             </button>
                             <button id="mobileMenuButton" class="md:hidden text-gray-600">
-                                <i data-lucide="menu" class="h-6 w-6"></i>
+                                <span class="lucide-icon h-6 w-6" data-lucide="menu"></span>
                             </button>
                         </div>
                     </div>
@@ -130,26 +125,26 @@
 
                             <!-- Natural Disasters -->
                             <div>
-                                <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center"><i data-lucide="cloud-sun" class="mr-2 text-blue-500"></i>Natural Disasters</h2>
+                                <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center"><span class="lucide-icon mr-2 text-blue-500" data-lucide="cloud-sun"></span>Natural Disasters</h2>
                                 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                                     <div class="disaster-card bg-white p-4 rounded-lg shadow hover:shadow-xl transition-shadow cursor-pointer" data-page="disasterDetail_earthquake">
-                                        <i data-lucide="activity" class="text-yellow-600 h-8 w-8 mb-2"></i>
+                                        <span class="lucide-icon text-yellow-600 h-8 w-8 mb-2" data-lucide="activity"></span>
                                         <h3 class="font-semibold text-gray-800">Earthquake</h3>
                                     </div>
                                     <div class="disaster-card bg-white p-4 rounded-lg shadow hover:shadow-xl transition-shadow cursor-pointer" data-page="disasterDetail_flood">
-                                        <i data-lucide="waves" class="text-blue-600 h-8 w-8 mb-2"></i>
+                                        <span class="lucide-icon text-blue-600 h-8 w-8 mb-2" data-lucide="waves"></span>
                                         <h3 class="font-semibold text-gray-800">Flood</h3>
                                     </div>
                                      <div class="disaster-card bg-white p-4 rounded-lg shadow hover:shadow-xl transition-shadow cursor-pointer" data-page="disasterDetail_tsunami">
-                                        <i data-lucide="ship-wheel" class="text-cyan-600 h-8 w-8 mb-2"></i>
+                                        <span class="lucide-icon text-cyan-600 h-8 w-8 mb-2" data-lucide="ship-wheel"></span>
                                         <h3 class="font-semibold text-gray-800">Tsunami</h3>
                                     </div>
                                     <div class="disaster-card bg-white p-4 rounded-lg shadow hover:shadow-xl transition-shadow cursor-pointer" data-page="disasterDetail_landslide">
-                                        <i data-lucide="mountain-snow" class="text-gray-600 h-8 w-8 mb-2"></i>
+                                        <span class="lucide-icon text-gray-600 h-8 w-8 mb-2" data-lucide="mountain-snow"></span>
                                         <h3 class="font-semibold text-gray-800">Landslide</h3>
                                     </div>
                                     <div class="disaster-card bg-white p-4 rounded-lg shadow hover:shadow-xl transition-shadow cursor-pointer" data-page="disasterDetail_forestfire">
-                                        <i data-lucide="flame" class="text-red-600 h-8 w-8 mb-2"></i>
+                                        <span class="lucide-icon text-red-600 h-8 w-8 mb-2" data-lucide="flame"></span>
                                         <h3 class="font-semibold text-gray-800">Forest Fire</h3>
                                     </div>
                                 </div>
@@ -157,18 +152,18 @@
                             
                             <!-- Man-made Disasters -->
                             <div>
-                                <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center"><i data-lucide="factory" class="mr-2 text-gray-700"></i>Man-Made Disasters</h2>
+                                <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center"><span class="lucide-icon mr-2 text-gray-700" data-lucide="factory"></span>Man-Made Disasters</h2>
                                 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                                     <div class="disaster-card bg-white p-4 rounded-lg shadow hover:shadow-xl transition-shadow cursor-pointer" data-page="disasterDetail_gasleak">
-                                        <i data-lucide="wind" class="text-green-600 h-8 w-8 mb-2"></i>
+                                        <span class="lucide-icon text-green-600 h-8 w-8 mb-2" data-lucide="wind"></span>
                                         <h3 class="font-semibold text-gray-800">Gas Leakage</h3>
                                     </div>
                                     <div class="disaster-card bg-white p-4 rounded-lg shadow hover:shadow-xl transition-shadow cursor-pointer" data-page="disasterDetail_nuclear">
-                                        <i data-lucide="atom" class="text-purple-600 h-8 w-8 mb-2"></i>
+                                        <span class="lucide-icon text-purple-600 h-8 w-8 mb-2" data-lucide="atom"></span>
                                         <h3 class="font-semibold text-gray-800">Nuclear Explosion</h3>
                                     </div>
                                     <div class="disaster-card bg-white p-4 rounded-lg shadow hover:shadow-xl transition-shadow cursor-pointer" data-page="disasterDetail_terrorist">
-                                        <i data-lucide="bomb" class="text-red-800 h-8 w-8 mb-2"></i>
+                                        <span class="lucide-icon text-red-800 h-8 w-8 mb-2" data-lucide="bomb"></span>
                                         <h3 class="font-semibold text-gray-800">Terrorist Attack</h3>
                                     </div>
                                 </div>
@@ -195,17 +190,17 @@
 
                             <!-- Region-Specific Alerts -->
                             <div class="bg-white p-6 rounded-xl shadow-lg">
-                                <h3 class="font-semibold text-gray-800 mb-4 flex items-center"><i data-lucide="map-pin" class="mr-2 text-red-500"></i>Alerts for Chittorgarh, Rajasthan</h3>
+                                <h3 class="font-semibold text-gray-800 mb-4 flex items-center"><span class="lucide-icon mr-2 text-red-500" data-lucide="map-pin"></span>Alerts for Chittorgarh, Rajasthan</h3>
                                 <div class="space-y-4">
                                     <div class="flex items-start space-x-3 bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-3 rounded">
-                                        <i data-lucide="alert-triangle" class="h-5 w-5 mt-1"></i>
+                                        <span class="lucide-icon h-5 w-5 mt-1" data-lucide="alert-triangle"></span>
                                         <div>
                                             <p class="font-bold">Heatwave Warning</p>
                                             <p class="text-sm">High temperatures expected this week. Stay hydrated and avoid outdoor activities during peak hours.</p>
                                         </div>
                                     </div>
                                     <div class="flex items-start space-x-3 bg-blue-100 border-l-4 border-blue-500 text-blue-700 p-3 rounded">
-                                       <i data-lucide="info" class="h-5 w-5 mt-1"></i>
+                                       <span class="lucide-icon h-5 w-5 mt-1" data-lucide="info"></span>
                                         <div>
                                             <p class="font-bold">Mock Drill Scheduled</p>
                                             <p class="text-sm">A campus-wide fire safety drill is scheduled for Friday at 11:00 AM.</p>
@@ -248,14 +243,28 @@
                                 <button class="w-full bg-red-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-red-600 transition">Start Challenge</button>
                             </div>
                         </div>
-                         <!-- Drill Card: Flood Response -->
-                        <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                         <!-- UPDATED Drill Card: Flood Response -->
+                        <div class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col">
                              <img src="https://placehold.co/600x400/60A5FA/FFFFFF?text=Flood+Drill" alt="Flood Scenario" class="w-full h-48 object-cover">
-                            <div class="p-6">
-                                <h3 class="text-xl font-semibold mb-2">Flood Ready Quiz</h3>
-                                <p class="text-gray-600 mb-4">Test your knowledge on how to prepare for and react to a flood warning in your area.</p>
-                                <button class="w-full bg-blue-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-600 transition">Take the Quiz</button>
+                            <div class="p-6 flex-grow flex flex-col">
+                                <h3 class="text-xl font-semibold mb-2">Flood Drill Hub</h3>
+                                <p class="text-gray-600 mb-4 flex-grow">Test your knowledge and strategic thinking with our flood preparedness exercises.</p>
+                                <div class="space-y-3 mt-auto">
+                                    <button id="startAnimatedDrill" class="w-full bg-blue-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-600 transition">Start Animated Drill</button>
+                                    <button id="startFlorimaGame" class="w-full bg-green-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-green-600 transition">Play FLORIMA Game</button>
+                                </div>
                             </div>
+                        </div>
+                    </div>
+                    <!-- Animated Drill Steps Container -->
+                    <div id="animatedDrillContainer" class="hidden mt-8 bg-white p-6 rounded-xl shadow-lg">
+                        <h2 class="text-2xl font-bold text-center mb-4">Flood Evacuation Drill</h2>
+                        <div id="drillStep" class="text-center">
+                            <!-- Steps will be injected here by JS -->
+                        </div>
+                        <div class="flex justify-center space-x-4 mt-6">
+                            <button id="drillPrevBtn" class="bg-gray-300 text-gray-800 font-bold py-2 px-6 rounded-lg hover:bg-gray-400 transition">Previous</button>
+                            <button id="drillNextBtn" class="bg-indigo-600 text-white font-bold py-2 px-6 rounded-lg hover:bg-indigo-700 transition">Next</button>
                         </div>
                     </div>
                 </div>
@@ -267,17 +276,17 @@
                     <h1 class="text-3xl font-bold text-gray-800 mb-6">Administrator Dashboard</h1>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
                         <div class="bg-white p-6 rounded-xl shadow-md text-center">
-                            <i data-lucide="users" class="h-10 w-10 text-blue-500 mx-auto mb-2"></i>
+                            <span class="lucide-icon h-10 w-10 text-blue-500 mx-auto mb-2" data-lucide="users"></span>
                             <p class="text-3xl font-bold">1,254</p>
                             <p class="text-gray-500">Active Students</p>
                         </div>
                         <div class="bg-white p-6 rounded-xl shadow-md text-center">
-                             <i data-lucide="siren" class="h-10 w-10 text-green-500 mx-auto mb-2"></i>
+                             <span class="lucide-icon h-10 w-10 text-green-500 mx-auto mb-2" data-lucide="siren"></span>
                             <p class="text-3xl font-bold">82%</p>
                             <p class="text-gray-500">Drill Participation Rate</p>
                         </div>
                          <div class="bg-white p-6 rounded-xl shadow-md text-center">
-                             <i data-lucide="shield-check" class="h-10 w-10 text-yellow-500 mx-auto mb-2"></i>
+                             <span class="lucide-icon h-10 w-10 text-yellow-500 mx-auto mb-2" data-lucide="shield-check"></span>
                             <p class="text-3xl font-bold">78%</p>
                             <p class="text-gray-500">Average Preparedness Score</p>
                         </div>
@@ -327,42 +336,42 @@
                     <h1 class="text-3xl font-bold text-gray-800 mb-6">Emergency Contacts</h1>
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                         <div class="bg-white p-6 rounded-lg shadow-md flex items-center space-x-4">
-                            <i data-lucide="phone" class="h-10 w-10 text-red-500 bg-red-100 p-2 rounded-full"></i>
+                            <span class="lucide-icon h-10 w-10 text-red-500 bg-red-100 p-2 rounded-full" data-lucide="phone"></span>
                             <div>
                                 <h3 class="font-semibold">National Emergency Number</h3>
                                 <p class="text-2xl font-bold text-gray-800">112</p>
                             </div>
                         </div>
                         <div class="bg-white p-6 rounded-lg shadow-md flex items-center space-x-4">
-                            <i data-lucide="siren" class="h-10 w-10 text-blue-500 bg-blue-100 p-2 rounded-full"></i>
+                            <span class="lucide-icon h-10 w-10 text-blue-500 bg-blue-100 p-2 rounded-full" data-lucide="siren"></span>
                             <div>
                                 <h3 class="font-semibold">Police</h3>
                                 <p class="text-2xl font-bold text-gray-800">100</p>
                             </div>
                         </div>
                          <div class="bg-white p-6 rounded-lg shadow-md flex items-center space-x-4">
-                           <i data-lucide="flame" class="h-10 w-10 text-orange-500 bg-orange-100 p-2 rounded-full"></i>
+                           <span class="lucide-icon h-10 w-10 text-orange-500 bg-orange-100 p-2 rounded-full" data-lucide="flame"></span>
                             <div>
                                 <h3 class="font-semibold">Fire</h3>
                                 <p class="text-2xl font-bold text-gray-800">101</p>
                             </div>
                         </div>
                         <div class="bg-white p-6 rounded-lg shadow-md flex items-center space-x-4">
-                           <i data-lucide="ambulance" class="h-10 w-10 text-green-500 bg-green-100 p-2 rounded-full"></i>
+                           <span class="lucide-icon h-10 w-10 text-green-500 bg-green-100 p-2 rounded-full" data-lucide="ambulance"></span>
                             <div>
                                 <h3 class="font-semibold">Ambulance</h3>
                                 <p class="text-2xl font-bold text-gray-800">102</p>
                             </div>
                         </div>
                          <div class="bg-white p-6 rounded-lg shadow-md flex items-center space-x-4">
-                           <i data-lucide="shield" class="h-10 w-10 text-yellow-500 bg-yellow-100 p-2 rounded-full"></i>
+                           <span class="lucide-icon h-10 w-10 text-yellow-500 bg-yellow-100 p-2 rounded-full" data-lucide="shield"></span>
                             <div>
                                 <h3 class="font-semibold">Disaster Management (NDMA)</h3>
                                 <p class="text-2xl font-bold text-gray-800">1078</p>
                             </div>
                         </div>
                          <div class="bg-white p-6 rounded-lg shadow-md flex items-center space-x-4">
-                           <i data-lucide="school" class="h-10 w-10 text-indigo-500 bg-indigo-100 p-2 rounded-full"></i>
+                           <span class="lucide-icon h-10 w-10 text-indigo-500 bg-indigo-100 p-2 rounded-full" data-lucide="school"></span>
                             <div>
                                 <h3 class="font-semibold">School Admin Office</h3>
                                 <p class="text-xl font-bold text-gray-800">01472-24XXXX</p>
@@ -370,12 +379,60 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- =================================================================
+                PAGE 7: FLORIMA GAME PAGE
+                ================================================================== -->
+                <div id="gamePage" class="page">
+                    <div class="flex justify-between items-center mb-4">
+                        <h1 class="text-3xl font-bold text-gray-800">FLORIMA: Flood Risk Management</h1>
+                        <button class="nav-link text-indigo-600 font-semibold flex items-center" data-page="drillsPage">
+                            <span class="lucide-icon mr-2 h-5 w-5" data-lucide="arrow-left"></span> Back to Drills
+                        </button>
+                    </div>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                        <!-- Left Column: Game Board -->
+                        <div class="lg:col-span-2 bg-white p-4 rounded-xl shadow-lg">
+                            <div id="gameBoard" class="grid grid-cols-5 gap-1">
+                                <!-- Game board cells will be generated by JS -->
+                            </div>
+                        </div>
+
+                        <!-- Right Column: Game Info & Controls -->
+                        <div class="space-y-6">
+                            <!-- Player Resources -->
+                            <div class="bg-white p-6 rounded-xl shadow-lg">
+                                <h3 class="font-semibold text-gray-800 mb-4">Your Resources</h3>
+                                <div id="playerResources" class="grid grid-cols-2 gap-4">
+                                    <!-- Resource stats will be generated by JS -->
+                                </div>
+                            </div>
+                            
+                            <!-- Event Card -->
+                            <div id="eventCard" class="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-800 p-4 rounded-lg shadow-lg">
+                                <h3 class="font-bold text-lg mb-2">Current Event</h3>
+                                <p id="eventText">Click "Next Turn" to draw an event card.</p>
+                            </div>
+                            
+                            <!-- Player Actions -->
+                            <div class="bg-white p-6 rounded-xl shadow-lg">
+                                 <h3 class="font-semibold text-gray-800 mb-4">Actions</h3>
+                                 <p id="actionInfo" class="text-sm text-gray-500 mb-4">Select a resource, then click on a map tile to use it.</p>
+                                 <div id="resourceCards" class="grid grid-cols-2 gap-3 mb-4">
+                                     <!-- Resource cards will be generated by JS -->
+                                 </div>
+                                 <button id="nextTurnBtn" class="w-full bg-indigo-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-indigo-700 transition">Next Turn</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </main>
         </div>
     </div>
-
-    <!-- Your Custom Scripts -->
-    <!-- Data must be loaded BEFORE the main script that uses it -->
+    
+    <script src="https://unpkg.com/lucide@latest"></script>
     <script src="data.js"></script>
     <script src="script.js"></script>
 </body>
